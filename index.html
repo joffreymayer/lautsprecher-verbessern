@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lautsprecher Klang verbessern | OptimizeAudio</title>
+    <meta name="description"
+        content="Entfachen Sie das versteckte Klangpotential, das in Ihrem Hifi Lautsprecher schlummert und sparen Sie sich dabei das Geld einer Neuanschaffung.">
+
+    <link rel="preload" href="/lautsprecher-verbessern.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="bilder/favicon/apple-touch-icon.png"> <!-- Logo as Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="bilder/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="bilder/favicon/favicon-16x16.png">
+
+    <script defer src="/lazy-load-img.js"></script> <!-- JS for "Lazy-Loading" the <img>-Elements -->
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            scroll-behavior: smooth;
+            padding: 0;
+        }
+
+        [id^=drop] {
+            display: none;
+        }
+
+        /*** Für Bilder ***/
+        img {
+            width: 100%;
+            /*Muss man setzen, sonst zoomt das Bild stark heran xD*/
+            height: auto;
+        }
+
+        nav {
+            margin: 0;
+            padding: 0;
+            background-color: #282E34;
+        }
+
+        nav:after
+
+        /*Inserts something after the navigation*/
+            {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        nav ul {
+            float: left;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            position: relative;
+            /*Jedes Untermenü geht an die Stelle, zu welchem Übermenü es gehört.*/
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 20px;
+        }
+
+        #logo {
+            padding: 0 30px;
+            font-size: 24px;
+            line-height: 60px;
+            color: #FFF;
+            font-family: 'Poiret One', cursive;
+            float: right;
+        }
+
+        nav ul li {
+            margin: 0px;
+            display: block;
+            /*Würde auch mit display:inline-block funktionieren.*/
+            float: left;
+            background-color: #282E34;
+        }
+
+        nav a {
+            display: block;
+            padding: 0 20px;
+            color: #FFF;
+            font-size: 20px;
+            line-height: 60px;
+            /*Setzt die Grösse um den <a>-Link herum*/
+            text-decoration: none;
+
+        }
+
+        nav ul ul {
+            display: none;
+            /*Macht, dass beide Sub-Menüs verschwinden*/
+            position: absolute;
+            top: 60px;
+        }
+
+        nav ul li:hover>ul {
+            display: inherit;
+        }
+
+        nav ul ul li {
+            width: 300px;
+            /*Dadurch passt du die width des Drop-Down Menüs an.*/
+            float: none;
+            display: list-item;
+            z-index: 10;
+            position: relative;
+        }
+
+        nav ul ul ul li {
+            position: relative;
+            /*Muss nicht stehen, geht auch ohne*/
+            top: -60px;
+            left: 220px;
+            text-align: center;
+        }
+
+        li>a:only-child:after {
+            content: '';
+        }
+
+        /*Phone Styles*/
+        @media only screen and (max-width: 400px) {
+            #logo {
+                display: none;
+            }
+
+            #logo-phone {
+                display: block;
+                float: right;
+                font-family: 'Poiret One', cursive;
+                font-size: 100%;
+            }
+
+            nav {
+                margin: 0;
+                /*----- um die Navigation nicht fixiert zu lassen auf dem Handy ------ position: static;*/
+            }
+
+            .toggle+a,
+            .menu {
+                display: none;
+            }
+
+            .toggle {
+                display: block;
+                background-color: #282E34;
+                padding: 0 20px;
+                font-size: 20px;
+                color: #FFF;
+                line-height: 60px;
+                text-decoration: none;
+                border: none;
+            }
+
+            .toggle:hover {
+                background-color: #2F3B44;
+            }
+
+            nav ul li a:hover {
+                background-color: #2F3B44;
+                /*Hover-Effekt hellgrau*/
+            }
+
+            [id^=drop]:checked+ul {
+                display: block;
+            }
+
+            nav ul li {
+                display: block;
+                /*Braucht man nicht. Funktioniert auch ohne*/
+                width: 100%;
+            }
+
+            nav ul ul .toggle,
+            nav ul ul a {
+                padding: 0 40px;
+            }
+
+            nav ul ul ul a {
+                padding: 0 80px;
+                /*Macht, dass der innere Abstand innerhalb der <a>-Boxen grösser werden*/
+            }
+
+            /*------------ Nicht so gut bzw. unnötig*/
+            nav a:hover,
+            nav ul ul ul a {
+                background-color: #282E34;
+            }
+
+            nav ul li ul li .toggle,
+            nav ul ul a {
+                background-color: #212121;
+            }
+
+            /*--------------- */
+
+            nav ul ul {
+                float: none;
+                /*Braucht es, sonst füllt das zweite Submenü nicht mehr die ganze Seite aus */
+                position: static;
+                /*Elements render in order, as they appear in the document flow*/
+                color: #ffffff;
+            }
+
+            nav ul ul li:hover>ul,
+            nav ul li:hover>ul {
+                display: none;
+            }
+
+            nav ul ul li {
+                display: block;
+                width: 100%;
+            }
+
+            nav ul ul ul li {
+                position: static;
+            }
+
+            .arrow a {
+                color: #F00;
+            }
+        }
+
+        /*Tablet Styles*/
+        @media only screen and (min-width: 401px) and (max-width: 1297px) {
+
+            /* Key: Mit den 1'297px wird die Navigation zum Drop-Down Menü. */
+            #logo {
+                display: none;
+            }
+
+            #logo-phone {
+                display: block;
+                float: right;
+                font-family: 'Poiret One', cursive;
+                font-size: 120%;
+            }
+
+            nav {
+                margin: 0;
+                /*----- um die Navigation nicht fixiert zu lassen auf dem Handy ------ position: static;*/
+            }
+
+            .toggle+a,
+            .menu {
+                /*Selects all <a> elements that are placed immediately after toggle class*/
+                display: none;
+            }
+
+            .toggle {
+                display: block;
+                background-color: #282E34;
+                padding: 0 20px;
+                font-size: 20px;
+                color: #FFF;
+                line-height: 60px;
+                text-decoration: none;
+                border: none;
+            }
+
+            .toggle:hover {
+                background-color: #2F3B44;
+            }
+
+            nav ul li a:hover {
+                background-color: #2F3B44;
+                /*Hover-Effekt hellgrau*/
+            }
+
+            [id^=drop]:checked+ul {
+                display: block;
+            }
+
+            nav ul li {
+                display: block;
+                /*Braucht man nicht. Funktioniert auch ohne*/
+                width: 100%;
+            }
+
+            nav ul ul .toggle,
+            nav ul ul a {
+                padding: 0 40px;
+            }
+
+            nav ul ul ul a {
+                padding: 0 80px;
+                /*Macht, dass der innere Abstand innerhalb der <a>-Boxen grösser werden*/
+            }
+
+            /*------------ Nicht so gut bzw. unnötig*/
+            nav a:hover,
+            nav ul ul ul a {
+                background-color: #282E34;
+            }
+
+            nav ul li ul li .toggle,
+            nav ul ul a {
+                background-color: #212121;
+            }
+
+            /*--------------- */
+
+            nav ul ul {
+                float: none;
+                position: static;
+                color: #ffffff;
+            }
+
+            nav ul ul li:hover>ul,
+            nav ul li:hover>ul {
+                display: none;
+            }
+
+            nav ul ul li {
+                display: block;
+                width: 100%;
+            }
+
+            nav ul ul ul li {
+                position: static;
+            }
+        }
+
+        /*Desktop-Styles*/
+        @media only screen and (min-width: 1298px) {
+            #logo {
+                display: block;
+            }
+
+            .toggle {
+                display: none;
+            }
+
+            nav ul li ul li:hover {
+                background: #CCC;
+            }
+
+            nav a:hover,
+            nav a:active,
+            nav a:focus,
+            nav a.thispage,
+            navsystem a:hover,
+            navsystem a:active {
+                background-color: #666666;
+            }
+
+
+        }
+
+        /** ----------- End Navi ------------------ **/
+
+        :root {
+            --transparent-subtitle-color: rgba(255, 255, 255, 0.5);
+            --non-transparent-subtitle-color: #fff;
+        }
+
+        .showcase-wrapper {
+            height: 95vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-content {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            transition: all 0.5s ease;
+        }
+
+        .showcase {
+            min-width: 100%;
+            display: grid;
+            place-items: center;
+            place-content: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .showcase h1 {
+            font-size: min(70px, 10vw);
+            width: min(600px, 90vw);
+            margin: 1.5rem auto;
+        }
+
+        .hero-image {
+            object-fit: cover;
+            object-position: center;
+            height: 95vh;
+        }
+
+        .hero-image {
+            object-fit: cover;
+            object-position: center;
+            height: 95vh;
+            display: block;
+        }
+
+        .title-on-img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .subtitle-on-img {
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            font-family: inherit;
+            text-transform: uppercase;
+            padding: 0.8rem 1.4rem;
+            outline: 0;
+            display: inline-block;
+        }
+
+        @media screen and (min-width: 992px) {
+            .subtitle-on-img {
+                font-size: 1.05rem;
+            }
+        }
+
+        .showcase picture {
+            width: 100vw;
+        }
+
+        .black-gradient picture:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            /*rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)*/
+            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%);
+            /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0)));
+            /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%);
+            /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%);
+            /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%);
+            /* IE10+ */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%);
+            /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
+            /* IE6-9 */
+        }
+
+        .brighter-black-gradient picture:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+            /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.1)), color-stop(100%, rgba(0, 0, 0, 0)));
+            /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+            /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+            /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+            /* IE10+ */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+            /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
+            /* IE6-9 */
+        }
+
+        @media screen and (max-width: 340px) {
+            .showcase h1 {
+                font-size: min(2rem, 8vh);
+            }
+        }
+
+        .showcase button {
+            background: transparent;
+            border: 2.5px solid #fff;
+            color: #fff;
+            font-family: inherit;
+            text-transform: uppercase;
+            padding: 0.8rem 1.4rem;
+            outline: 0;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .showcase a {
+            text-decoration: none;
+        }
+
+        .showcase button:hover {
+            background: #acacac;
+            color: #000;
+        }
+
+        .border-wrapper {
+            background-color: rgba(204, 204, 204, 0.65);
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <nav>
+        <label for="drop" class="toggle">&#8801; Menu <span id="logo-phone">OptimizeAudio.com</span></label>
+        <input type="checkbox" id="drop" />
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/klangoptimierung.html">Klangoptimierung</a></li>
+            <li><a href="/produkte/">Produkte</a></li>
+            <li><a href="/preisliste.html">Preisliste</a></li>
+            <li>
+                <label for="drop-1" class="toggle">Dienstleistungen +</label>
+                <a href="#" class="thispage">Dienstleistungen</a>
+                <input type="checkbox" id="drop-1" />
+                <ul class="drop-down">
+                    <li><a href="/optimierung-vor-ort.html">Optimierung vor Ort</a></li>
+                    <li><a href="/monatlicher-klang-workshop.html">Monatlicher Workshop</a></li>
+                </ul>
+            </li>
+            <li>
+                <label for="drop-2" class="toggle">Über Uns +</label>
+                <a href="#">Über Uns</a>
+                <input type="checkbox" id="drop-2" />
+                <ul class="drop-down">
+                    <li><a href="/unternehmen/unser-team.html">Unser Team</a></li>
+                </ul>
+            </li>
+            <li><a href="/kontakt/">Kontakt</a></li>
+        </ul>
+        <span id="logo">OptimizeAudio.com</span>
+    </nav>
+
+    <main role="main">
+        <!-- Start "Hero"-Sektion -->
+        <div class="showcase-wrapper">
+
+            <div class="showcase-content">
+
+                <div class="showcase brighter-black-gradient">
+                    <picture>
+
+                        <!-- On a screen <= 756x our image is 100vw... -->
+                        <source media="(max-width: 768px)" sizes="100vw" srcset="/bilder/hero/hero-lautsprecher-verbessern-phone-375.jpg 375w,
+                        /bilder/hero/hero-lautsprecher-verbessern-phone-600.jpg 600w,
+                        /bilder/hero/hero-lautsprecher-verbessern-phone-786.jpg 786w,
+                        /bilder/hero/hero-lautsprecher-verbessern-phone-1000.jpg 1000w" />
+
+                        <!-- For the Screen-Sizes above 768px-->
+                        <source sizes="100vw" srcset="/bilder/hero/hero-lautsprecher-verbessern-375.jpg 375w,
+                        /bilder/hero/hero-lautsprecher-verbessern-600.jpg 600w,
+                        /bilder/hero/hero-lautsprecher-verbessern-786.jpg 786w,
+                        /bilder/hero/hero-lautsprecher-verbessern-1080.jpg 1080w,
+                        /bilder/hero/hero-lautsprecher-verbessern-1600.jpg 1600w,
+                        /bilder/hero/hero-lautsprecher-verbessern-2000.jpg 2000w" />
+
+                        <img src="/bilder/hero/hero-lautsprecher-verbessern-1080.jpg"
+                            width="1080" height="810"
+                            alt="Bild mit Antiresonatoren an Lautsprecher, um zu zeigen, wie sich ein Hifi Lautsprecher verbessern lässt."
+                            class="hero-image" />
+                    </picture>
+                    <div class="title-on-img">
+                        <h1>Klang eines Lautsprechers verbessern</h1>
+                        <p class="subtitle-on-img">Unschlagbar effizient. Universell einsetzbar. Bezaubernder
+                            Klang.</p>
+                        <!-- <a href="#sortiment"><button type="button">Sortiment Entdecken</button></a> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Ende: "Hero"-Sektion -->
+
+        <!-- Start: "Botschafts"-Sektion  -->
+        <div class="special">
+            <p>
+                Vergessen Sie den Kauf von neuen Lautsprechern, um Ihre Hifi Anlage zu verbessern. Mit unserer simplen
+                Methode, werden Sie deutlich weniger Geld ausgeben und trotzdem hohe Klangfortschritte erzielen.
+            </p>
+        </div>
+        <!-- Ende: "Botschafts"-Sektion -->
+
+        <!-- Start: "Img-Txt"-Sektion  -->
+        <div class="img-txt-wrapper">
+            <div class="img-txt-article-container">
+                <!--before pseudo img-txt-article-container-->
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/2-wege-zum-besserem-Klang-alternative.jpg"
+                            alt="Illustration via Bild, welche 2 Möglichkeiten zur Verbesserung eines Lautsprechers es gibt."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">
+                                    Wie lässt sich der Klang von Lautsprechern typischerweise verbessern?
+                                </h2>
+                                <!-- <h3 class="img-txt--subtitle">Die traditionellen Arten, um Boxen zu optimieren.</h3> -->
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Zur klanglichen Verbesserung eines Lautsprechers wird gewöhnlich auf einer der
+                                        beiden Alternativen gesetzt:
+                                    </p>
+
+                                    <ul>
+                                        <li>
+                                            Man geduldet sich bis die neue Generation an Hifi Boxen auf den Markt kommt,
+                                            um von den besseren Komponenten und fortgeschritteneren Technologien zu
+                                            profitieren.
+                                        </li>
+                                        <li>Oder man wählt einen leistungsfähigeren Lautsprecher.</li>
+
+                                    </ul>
+
+                                    <p>
+                                        <em>
+                                            Beide obigen Vorgehen ziehen allerdings gemeinsame Nachteile mit sich: die
+                                            Investition in einen besseren / neueren Lautsprecher verursacht - neben dem
+                                            Kauf der Boxen - auch einen anfänglichen Suchaufwand ("Welche Lautsprecher
+                                            würde mein System weiterbringen?"). Ausserdem sollte ebenfalls Zeit für die
+                                            Entsorgung / den Verkauf des Vorgängermodells in Betracht gezogen werden.
+                                            Deshalb stellt sich die Frage, ob es eine weitere Methode gibt, welche diese
+                                            beiden inhärenten Nachteile umgeht? Die Antwort: ja, mit Klangoptimierung
+                                            ist dies möglich!
+                                        </em>
+                                    </p>
+
+
+
+                                    <!-- 
+                                        
+                                        <p>
+                                            Es gibt 2 offensichtliche Wege, einen Lautsprecher zu verbessern. Entweder kauft man sich einen Lautsprecher einer neueren Generation. Oder man entscheidet sich, in einer bestimmten Lautsprecher-Serie ein Modell mit höherer Leistung zu erwerben. 
+                                        </p>
+        
+                                        <p>
+                                            Um von diesem Lautsprecher-Upgrade zu profitieren, wird der Besitzer jedoch seine alten Lautsprecher austauschen müssen. Hierbei wird der Eigentümer in der Regel zwischen folgenden Vorgehen wählen müssen:
+                                        </p>
+        
+                                        <ul>
+                                            <li>Wenn das Budget es erlaubt, besteht die Möglichkeit, beim lokalen Fachhändler vorbeizuschauen und mit ihm einen Deal bezüglich einer Rückkauf-Aktion zu verhandeln.</li>
+                                            <li>Alternativ wird der Verkauf des Vorgänger-Modells selbst in die Hand genommen (via Internet oder bei Bekannten) und mit dem Verkaufs-Ertrag kann die neue Box erworben werden (idealerweise zu einem guten Preis).</li>
+                                        </ul>
+        
+                                        <p><em>
+                                            Alle diese Massnahmen sind vollkommen gerechtfertigt, um den Klang Ihres Lautsprechers zu verbessern. Und wenn der neue Lautsprecher die persönlichen ästhetischen &amp; klanglichen Anforderungen erfüllt: umso besser! Der inhärente Nachteil, unter welchem diese beiden Vorgehensweisen leiden, ist, dass sie mit erheblichem Such- &amp; Geld-Aufwand verbunden sind. 
+                                        </em></p>
+                                        
+                                        <p>
+                                        Unternehmen basieren ihre Verkaufsstrategie darauf, dass Sie - in regelmässigen zeitlichen Abständen - Ihr Produkt-Sortiment erneuern. So können die neusten Technologien in das Produkt eingesetzt werden und / oder Optimierungen vollzogen, um dem Endkunden ein Gut höherer Qualität anzubieten. Auch Lautsprecher haben einen Produkte-Lebenszyklus, der im Durchschnitt zwischen 5-7 Jahre liegt. Und im Falle von Hifi Boxen wird beim Aspekt der "besseren Qualität" natürlich von höherer Klangqualität gesprochen.  
+                                        
+                                    </p> -->
+
+
+                                    <!-- <p>
+                                        Das folgende Problem ist jedem audiophilen Veteranen bekannt: eine neue Generation an Hifi Lautsprecher wird am Markt vorgestellt, die besser sind, als die vorherige Generation. Auch die Hifi Tests in renommierten Magazinen haben nur Lob übrig. Nach dem Probehören beim Händler, entschliesst man sich zum Kauf der neuen Box.
+                                    </p> 
+    
+                                    <p>Für die Ersetzung Ihres Vorgängermodells, werden Sie in der Regel zwischen folgenden Möglichkeiten wählen müssen:</p>
+    
+                                    <ul>
+                                        <li>Wenn das Budget es erlaubt, werden Sie beim lokalen Fachhändler vorbeischauen und mit ihm einen Deal bezüglich einer Rückkauf-Aktion verhandeln.</li>
+                                        <li>Alternativ werden Sie den Verkauf Ihres Vorgänger-Modells selbst in die Hand nehmen und mit dem Verkaufs-Ertrag die neue Box erwerben, idealerweise zu einem guten Preis.</li>
+                                    </ul>                            
+                                    -->
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/antiresonatoren-an-focal-scala-utopia-2-1080.jpg"
+                            alt="Focal Scala Utopia Lautsprecher verbessert." class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Unsere Lösung</h2>
+                                <h3 class="img-txt--subtitle">Mehr Klang für wenig Geld!</h3>
+                                <div class="img-txt--content">
+
+                                    <!-- <p><em>
+                                        Bei uns geht es einfacher: mit unserem Know-How in Sachen Klangoptimierung ist es möglich - bereits ab CHF 300 - Ihr System auf ein neues Klang-Level zu hieven. Das beste dabei? Ihre Anlage bleibt diesselbe. Wir nehmen Ihr bestehendes Anlagen-Setup als Grundlage und optimieren Ihre bestehende Hifi Elektronik.
+                                    </em></p> -->
+
+                                    <p>
+                                        Mit dem <a
+                                            href="https://www.optimizeaudio.com/produkte/antiresonatoren-an-lautsprecher/"
+                                            target="_blank" rel="noreferrer">Antiresonator</a> und den <a
+                                            href="https://www.optimizeaudio.com/produkte/antismog-kleber-an-lautsprecher/"
+                                            target="_blank" rel="noreferrer">Antismog-Klebern</a> von OptimizeAudio
+                                        steht Ihnen eine sehr simple und erschwingliche Methode zur Verfügung, um Ihre
+                                        Hifi Anlage, in neue Klangsphären zu bringen.
+                                    </p>
+
+                                    <!-- <p>
+                                        Hierbei sollten Sie Antismog-Kleber in der Nähe Ihrer Boxen-Treiber platzieren. Im Kontrast dazu werden die Antiresonatoren jeweils auf alle Boxen-Oberflächen befestigt. Optional kann auch der Sockel der Box mit Antiresonatoren bestückt werden. Fertig!
+                                    </p>
+    
+                                     <p>
+                                        Durch den Einsatz der Antiresonatoren &amp; Antismog-Kleber, sollte Ihr Musiksystem deutlich mehr Auflösung, Intensität und explosivere Dynamik bei der Wiedergabe aufzeigen, sowie über signifikant mehr Bass-Energie verfügen.
+                                    </p>
+                                     -->
+
+                                    <p>
+                                        <em>
+                                            Das beste dabei? Alles an Ihrer Anlage bleibt gleich. Als Ausgangslage
+                                            nehmen wir Ihr Anlagen-Setup. Wir optimieren lediglich Ihre bestehenden
+                                            Lautsprecher. Dies schont Ihr Budget: Regallautsprecher lassen sich nämlich
+                                            bereits ab CHF 200 verbessern. Standlautsprecher ab CHF 400. Ausserdem
+                                            können Sie dadurch besser beurteilen, ob sich die Investition in eine neue
+                                            Box nun tatsächlich lohnt oder ob diese kosteneffiziente Massnahme bereits
+                                            genügt.
+                                        </em>
+                                    </p>
+
+                                    <!-- <p>
+                                        <em>
+                                            Das beste dabei? Ihre Anlage bleibt diesselbe. Wir nehmen Ihr bestehendes Anlagen-Setup als Grundlage und optimieren Ihr bestehender Lautsprecher. Das schont Ihr Portemonnaie: Regallautsprecher lassen sich nämlich bereits ab CHF 200 verbessern. Standlautsprecher ab CHF 400. Ausserdem können Sie dadurch besser beurteilen, ob sich die Investition in eine neue Box nun tatsächlich lohnt oder ob diese kosteneffizienten Massnahme bereits genügt.
+                                        </em>
+                                    </p> -->
+
+                                    <!-- <ul>
+                                        <li>Bei den Antismog-Kleber geht es darum, die beim Stromfluss entstehenden elektromagnetischen Felder zu kontrollieren, um deren negativen Effekt auf die wahrgenommene Klangqualität zu eliminieren.</li>
+                                        <li>Bei den Antiresonatoren geht es um das störende Vibrations-Verhalten der Hifi Elektronik, die von den Schallwellen des Lautsprechers angeregt werden. Um zu verhindern, dass die Blechteil-Oberflächen Ihrer Hifi Geräte einen negativen Einfluss auf das wahrgenommene Hörelebnis hat, verwenden wir dieses Zubehör.</li>
+                                    </ul>
+                                    
+                                    <p>
+                                          
+                                    </p>
+    
+                                    <p>
+                                        
+                                    </p>
+    
+                                    <p>
+                                        <em>
+                                            Das Beste dabei? Die Antismog-Kleber sind aufgrund ihrer Transparenz &amp; Dimensionen <u>unsichtbar</u> (Maßen = 5 x 5 mm). Ausserdem können Sie sich den Einsatz jeglicher Arten von Schaumstoffen, grössere Bassattrappen, sowie eierförmige Kartons sparen. So bewahren Sie die Ästethik Ihres Raumes und beheben gleichzeitig jegliche akustische Probleme!
+                                        </em>
+                                    </p>
+    
+                                    <p>
+                                        Bringen Sie den Antiresonatoren dabei bloss an den Ecken und Wänden Ihres Raumes an. Vom Material, Gewicht und der Form her, wurde dieses Zubehör so konzipiert, dass es alle überflüssigen Nachhall-Töne, die im Raum aufgrund der Musik entstehen, vollständig eliminiert werden.
+                                    </p>
+    
+                                    <p>
+                                        Durch den Einsatz von einem Set - was der Anzahl von 20 Stück entspricht - sollten bereits viele Verfärbungen und Resonanzen beseitigt werden. Ansonsten besteht die Möglichkeit, weitere Sets einzusetzen.
+                                    </p>
+    
+                                    <p>
+                                        <em>
+                                            Das Beste dabei? Die Antiresonatoren sind aufgrund ihrer Dimensionen, Farben &amp; Maßen praktisch <u>unsichtbar</u> (Größe = 11 x 2.3 mm, lieferbar in weiss oder schwarz). Ausserdem können Sie sich den Einsatz jeglicher Arten von Schaumstoffen, grössere Bassattrappen, sowie eierförmige Kartons sparen. So bewahren Sie die Ästethik Ihres Raumes und beheben gleichzeitig jegliche akustische Probleme!
+                                        </em>
+                                    </p> -->
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/wo-soll-ich-beginnen.jpg"
+                            alt="Focal Scala Utopia Lautsprecher verbessert." class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Wo soll ich beginnen?</h2>
+                                <h3 class="img-txt--subtitle">Step-by-Step - mit günstigen Mitteln - zum perfekten
+                                    Klang.</h3>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Typischerweise unterteilen wir die Verbesserung Ihres Lautsprechers in 2 Etappen
+                                        (siehe Bild):
+                                    </p>
+
+                                    <ul>
+                                        <li><a href="#etappe-1">In Etappe 1</a> werden die Lautsprecher mittels äusserer Vibrationsdämpfung
+                                            verbessert.</li>
+                                        <li>Für die Maximierung der Klangleistung Ihrer Box wird - <a href="#etappe-2">in Etappe 2</a> - das
+                                            innere Vibrationsverhalten der Box unter Kontrolle gebracht.</li>
+                                    </ul>
+
+                                    <!-- <p>
+                                        <em>
+                                            Die obige Einteilung dient nur als Empfehlung. Sie müssen selbstverständlich nicht alle Etappen implementieren. Jede Massnahme wird Ihr System klanglich jedoch weiterbringen. Wie hoch diese Klang-Gewinne sind, hängt von der individuellen "Lautsprecher-Geräte-Raum"-Konstellation ab.
+                                        </em>
+                                    </p> -->
+
+                                    <!-- <p>
+                                        <em>
+                                            Kostenlose, wie auch sehr günstige Massnahmen, können Ihr System klanglich überproportional besser klingen lassen, als 
+                                        </em>
+                                    </p> -->
+
+
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+            </div>
+            <!--end img-txt-article-container article-->
+        </div>
+        <!-- Ende: "Img-Txt"-Sektion  -->
+
+        <!-- Start: "Übergangs-Kapitel"-Sektion -->
+        <div class="storytelling-new-chapter-wrapper" id="etappe-1">
+
+            <div class="flex-desktop-column">
+                <div class="flex-special-storytelling">
+                    <h2 class="h2-storytelling-headlines" style="text-align: center;">Äussere Vibrations-Dämpfung des
+                        Lautsprechers</h2>
+                    <div class="invisible-story-for-desktop"><span></span></div>
+                </div>
+                <div>
+                    <h3 class="h3-storytelling-headlines"><em>Etappe 1</em></h3>
+                </div>
+            </div>
+            <!-- Ende "row": 1-->
+
+            <div class="grid-desktop-row">
+                <div class="storytelling-problem-content grid-row">
+                    <h3 class="h3-storytelling-problem-content">Der erste Schritt zum Superklang</h3>
+
+                    <p>
+                        Selbst wenn Lautsprecher-Hersteller bei der Wahl der Dämpfungs-Materialien, bei der Verleimung
+                        &amp; Verstrebungen, sowie beim Einsatz hoher Material-Dichten die höchste Sorgfalt an den Tag
+                        legen, wird sich eine Box durch ihre eigens emittierten Schallwellen selbst anregen.
+                    </p>
+
+                    <p>
+                        Jede Boxen-Oberfläche wird dadurch angeregt, zu vibrieren, auch bei tiefen Pegeln. Dies
+                        beeinträchtigt die Klangleistung und die Klangqualität des Lautsprechers.
+                    </p>
+
+                    <p>
+                        <em>
+                            Und genau hier setzt die erste Etappe zur Verbesserung einer Hifi Box an.
+                        </em>
+                    </p>
+                </div>
+                <div class="storytelling-problem-img grid-row">
+                    <img data-lazy="/bilder/vibration-beispiel.jpeg"
+                        class="storytelling-img lazy" />
+                </div>
+            </div>
+            <!-- Ende "row": 2-->
+
+        </div>
+        <!-- Ende "Übergangs-Kapitel"-Sektion -->
+
+
+        <!-- Start: "Img-Txt"-Sektion -->
+        <div class="img-txt-wrapper">
+            <div class="img-txt-article-container">
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/bedienungsanleitung.jpg"
+                            alt="Illustration, wie sich ein Lautsprecher mit den Antismogkleber und Antiresonatoren verbessern lässt."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Gebrauchsanleitung zur Etappe 1</h2>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Sowohl die Antiresonatoren, wie auch die Antismog-Kleber, werden mit einer
+                                        Bedienungsanleitung geliefert und sollten gemäss diesen Empfehlungen an Ihrem
+                                        Lautsprecher angebracht werden.
+                                    </p>
+
+                                    <p>
+                                        Bei den Antismog-Klebern reichen vier Kleber pro Medium- &amp; Hochton-Treiber,
+                                        sowie 1 Kleber am Basstreiber aus.
+                                    </p>
+
+                                    <p>
+                                        Für die Antiresonatoren können bereits mit je 2 Stücken an der Vor- &amp;
+                                        Unterseite bei Regallautsprechern erste Klangfortschritte festgestellt werden.
+                                        Bei Standlautsprechern sollten es jeweils 5 Stück auf den beiden Boxen-Seiten
+                                        sein. Um das Klangergebnis zu maximieren, können auch mehr Antiresonatoren am
+                                        Lautsprecher hinzugefügt werden. Hierbei gilt es jedoch zu beachten, dass der
+                                        Einsatz von zu vielen Anitresonatoren klanglich kontraproduktiv ist! Wenn jedoch
+                                        alles gemäss der Anleitung befolgt worden ist, heisst es dann bloss noch: auf
+                                        "Play" drücken und geniessen.
+                                    </p>
+                                    <p>
+                                        <em>
+                                            Mit der Optimize-Methode wird das Verbessern der Lautsprecher
+                                            revolutioniert. So wird der Kauf neuen Box häufig obsolet, denn in Ihrem
+                                            alten Modell schlummert ein unvermutet hohes Klangpotential!
+                                        </em>
+                                    </p>
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/klang-1.jpg" alt="Bild mit Blasinstrumenten."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Klanggewinn der Antismogkleber</h2>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Nach dieser Maßnahme werden Sie von deutlich schmelzigerem und feinerem Sound
+                                        profitieren.
+                                    </p>
+
+                                    <p>
+                                        <em>
+                                            Alles, was beim Hören noch spitzig und kantig erschien, verschwindet. Die
+                                            Wiedergabe wird homogener.
+                                        </em>
+                                    </p>
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/klang-2.jpg" alt="Bild eines Konzerts."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Klanggewinn der Antiresonatoren</h2>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        In einem Satz zusammengefasst: nach der "Antiresonatoren-Kur" werden Sie Ihre
+                                        Lautsprecher nicht mehr wiedererkennen!
+                                    </p>
+
+                                    <ul>
+                                        <li>Der Intensitätsgewinn ist verblüffend: der Lautsprecher "summt" nun nicht
+                                            mehr vor sich herum, sondern singt während jedem Musikstück mit
+                                            eindrücklicher Plastizität.</li>
+                                        <li>Der Bass greift - mit erstaunlicher Leichtigkeit - um Einiges tiefer in den
+                                            Frequenzkeller und verleiht so jeder gespielten Note deutlich mehr Gewicht.
+                                            <ul>
+                                                <li>Dadurch wird die Basslinie klarer wahrnehmbar. So sind auch feinere
+                                                    Bass-Nuancen leichter zu erkennen.
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>Die dynamische Bandbreite scheint sich ausgedehnt zu haben: Fortissimos
+                                            wirken explosiver und - umgekehrt - klingen sanfte Pianissimos zarter und
+                                            emotionaler.</li>
+                                        <li>Perkussions-Instrumente verfügen nun über eine gewaltige Kraft und
+                                            erstrahlen förmlich in glänzender Pracht.</li>
+                                    </ul>
+
+                                    <p>
+                                        <em>
+                                            Alle diese festgestellten Klanggewinne wirken sich letzten Endes derart
+                                            positive auf die Wahrnehmung des gesamten Hörerlebnisses aus, dass es bei
+                                            vielen Hörern den Eindruck erweckt, über eine zweimal grössere &
+                                            leistungsfähigere Box zu verfügen.
+                                        </em>
+                                    </p>
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+            </div>
+        </div>
+        <!-- Ende: "Img-Txt"-Sektion -->
+
+        <!-- Start: "Übergangs-Kapitel"-Sektion -->
+        <div class="storytelling-new-chapter-wrapper" id="etappe-2">
+
+            <div class="flex-desktop-column">
+                <div class="flex-special-storytelling">
+                    <h2 class="h2-storytelling-headlines" style="text-align: center;">Wie kann ich einen Lautsprecher
+                        klanglich maximieren?</h2>
+                    <div class="invisible-story-for-desktop"><span></span></div>
+                </div>
+                <div>
+                    <h3 class="h3-storytelling-headlines"><em>Etappe 2</em></h3>
+                </div>
+            </div>
+            <!-- Ende "row": 1-->
+
+            <div class="grid-desktop-row grid-row">
+                <div class="storytelling-problem-content">
+                    <h3 class="h3-storytelling-problem-content">More Sound please!</h3>
+
+                    <p>
+                        Selbst nachdem das äussere Vibrationsverhalten des Lautsprechers unter Kontrolle gebracht wurde,
+                        bedeutet das nicht, dass die Box nun vollständig vom schädlichen Einfluss selbst emmitierter
+                        Schallwellen befreit ist.
+                    </p>
+                    <p>
+                        <em>
+                            Was jetzt noch fehlt, ist das Vibrationsverhalten im Innenleben des Lautsprechers unter
+                            Kontrolle zu bringen. Und genau hier setzt die Etappe 2 an. So ist garantiert, dass die Box
+                            unter optimalen Bedingungen arbeitet und dass sie dadurch - klanglich - maximale Leistungen
+                            erbringen kann.
+                        </em>
+                    </p>
+
+                </div>
+                <div class="storytelling-problem-img grid-row">
+                    <img data-lazy="/bilder/optimierung-treiber/beethoven.jpg"
+                        class="storytelling-img lazy" />
+                </div>
+            </div>
+            <!-- Ende "row": 2-->
+
+        </div>
+        <!-- Ende "Übergangs-Kapitel"-Sektion -->
+
+        <!-- Start: "Img-Txt"-Sektion -->
+        <div class="img-txt-wrapper">
+            <div class="img-txt-article-container">
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/bedienungsanleitung-intern.jpg"
+                            alt="Bild einer Tafel mit Richtungs-Anzeigen, um zu illustrieren, dass es weitere Einsatzmöglichkeiten der Antismog-Kleber und Antiresonatoren gibt (neben der Verbesserung der Hifi Lautsprecher)."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Bedienungsanleitung zur Etappe 2</h2>
+                                <!-- <h3 class="img-txt--subtitle">Entfachen Sie das Biest in Ihrer Anlage und sparen Sie
+                                    sich dabei das Geld einer Neuanschaffung.</h3> -->
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Um der Verbesserung Ihres Lautsprechers den letzten Feinschliff zu verleihen, ist die Öffnung aller Treiber erforderlich. Dann steht der Anbringung der Antiresonatoren &amp; Antismogkleber im Innenleben des Lautsprechers jedoch keine Hindernisse mehr im Wege, um ins Klang-Nirvana zu gelangen. 
+                                    </p>
+
+                                    <p>
+                                        Grundsätzlich unterscheiden wir zwei Unter-Etappen bei der Maximierung eines Lautsprechers:
+                                    </p>
+
+                                    <ul>
+                                        <li>Das Anbringen eines Antiresonators - für beide Boxen - an jeweils allen Strebungen im Inneren des Lautsprecher-Gehäuses.
+                                            <ul>
+                                                <li>Hier ist zu bemerken, die Bauanleitung Ihres Lautsprechers genau zu studieren, bevor Sie mit diesem Schritt beginnen.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Das Platzieren von Antiresonatoren - inklusive einem Antismog-Kleber - am Filter einer der beiden Boxen. Die genaue Anleitung dazu finden Sie <a href="#optimierung-filter">im nächsten Kapitel</a>.</li>
+                                    </ul>
+
+                                    <p>
+                                        <em>
+                                            Beide Unter-Etappen der Maximierung beinhalten gewisse Risiken, weil Hoch-, Mittel- und Tieftöner abgebaut werden müssen, um im Inneren des Lautsprecher-Gehäuses zu gelangen. Jegliche Haftung unseres Unternehmens bei der Beschädigung Ihrer Lautsprecher lehnen wir deshalb klar ab (wir danken, für Ihr Verständnis!).
+                                        </em>
+                                    </p>
+
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+            </div>
+        </div>
+        <!-- Ende: "Img-Txt"-Sektion -->
+
+        <!-- Start: "Lightbox-Gallery"-Sektion -->
+        <div class="lightbox-wrapper vh-100" id="optimierung-filter">
+
+            <!-- This part of the Gallery contains some title & some introductory text... -->
+            <div class="lightbox-title-container">
+                <h2>Optimierung der Filter - Eine Step-by-Step Anleitung</h2>
+
+                <!-- <p>
+                    Falls Sie mit dem Computer unsere Webseite verwenden, können Sie mit der Maus über die Bilder fahren und die Details 
+                </p> -->
+            </div>
+
+            <!-- This part contains the actual gallery with the lighthouse-effect -->
+            <div class="gallery-container lightbox">
+
+                <!-- 👇 The actual Gallery. -->
+                <div class="gallery">
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/oeffnung-9.jpeg" class="gallery-img-link"> <!-- style="border-right: 3px solid yellow; border-bottom: 3px solid yellow;" -->
+                            <img data-lazy="/bilder/optimierung-treiber/oeffnung-9.jpeg" alt="Noob" class="lazy"> <!-- Note: AR of 1.44 (width : height)-->
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 1</p>
+                            <h3>Treiber öffnen</h3>
+                            <p>
+                                Zuerst geht es darum, einen der Treiber Ihres Lautsprechers zu öffnen. Ob Sie mit dem Bass, dem Medium oder die Tweeter beginnnen, spielt keine Rolle.<br><br>
+                                Für die Maximierung braucht es nur die Öffnung einer der beiden Boxen. Welche Sie wählen, spielt ebenfalls keine Rolle. 
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            1. Treiber abmontieren
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/kondo-8.jpeg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/kondo-8.jpeg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 2</p>
+                            <h3>Alle Filter finden</h3>
+                            <p>
+                                Im Innenleben Ihrer Box werden Sie Filter auffinden, auf denen sich Kondensatoren befinden (siehe Bild).<br><br> 
+                                
+                                Generell verfügt jeder Lautsprecher über 2 bis 9 Kondensatoren pro Filter. Diese werden wir nun in ihrem Vibrationsverhalten optimieren.
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            2. Lokalisierung aller Filter
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/kondo-2.jpg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/kondo-2.jpg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 3</p>
+                            <h3>Wähle einen Kondensator (zufällig) aus</h3>
+                            <p>
+                                Zuerst wählen Sie - per Zufall - einen der Kondensatoren am Filter aus und platzieren Sie den Antiresonator mit Antismog-Kleber darauf. Mit dieser Massnahme werden wir den negativen Einfluss des inneren Vibrationsverhalten auf den Klang verringern.
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            3. Auswahl
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/kondo-4.jpeg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/kondo-4.jpeg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 4</p>
+                            <h3>Antiresonator platzieren</h3> <!-- vorher: Schritt 4: Zusammenbau Eruierung des "besten" Kodensators -->
+                            <p>
+                                Nachdem Sie sich (zufällig) für einen der Kondensatoren festgelegt haben, befestigen Sie einen Antiresonatoren - inklusive Antismog-Kleber - darauf. Wo genau, spielt keine Rolle, da der Resonator seine Wirkung sowieso ausfaltet, sobald er mit dem Kondensator in Berührung kommt. Wir empfehlen, den Antiresonator an einem Ort zu platzieren, der gut sichtbar ist.
+                            </p>
+                            <!--
+                                 <br><br>
+                                Nochmals Probehören und sich die Frage stellen: "Welcher der optimierten Kondensatoren klang - meines erachtens - besser?" <br><br>
+                                Wiederholen Sie Schritte 2 bis 4, bis Sie den "besten" Kodensator mit Antiresonator &amp; Antismog eruiert haben. 
+                            -->
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            4. Platzierung des Antiresonators (inkl. Antismog-Kleber)
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/zugemacht-1.jpeg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/zugemacht-1.jpeg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 5</p>
+                            <h3>Erneuter Zusammenbau der Treiber</h3>
+                            <p>
+                                Nun da einer Ihrer Kondensatoren optimiert wurde, können Sie den demontierten Treiber wieder aufschrauben, damit Sie mit dem ersten Probehören starten können.
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            5. Treiber wieder aufschrauben
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/probe.jpg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/probe.jpg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 6</p>
+                            <h3>Erstes Probehören</h3>
+                            <p>
+                                Das Ziel bei diesem Schritt ist es, sich einen ersten (Hör-)Eindruck des optimierten Kondensators zu verschaffen. Später sollte das hier wahrgenommene Hörerlebnis mit den Ergebnissen zusätzlicher Modifikationen verglichen werden, um zu beurteilen, welche Optimierungen als "das beste Resultat" empfunden wurde.
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+
+                        <div class="gal-notiz">
+                            6. Erstes Probehören
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/oeffnung-9.jpeg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/oeffnung-9.jpeg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 7</p>
+                            <h3>Nochmaliger Abbau der Treiber</h3> <!-- vorher: Schritt 4: Zusammenbau Eruierung des "besten" Kodensators -->
+                            <p>
+                                Nun sollten Sie die Treiber wieder öffnen, um wieder zum Filter zu gelangen.
+                            </p>
+                            <!--
+                                 <br><br>
+                                Nochmals Probehören und sich die Frage stellen: "Welcher der optimierten Kondensatoren klang - meines erachtens - besser?" <br><br>
+                                Wiederholen Sie Schritte 2 bis 4, bis Sie den "besten" Kodensator mit Antiresonator &amp; Antismog eruiert haben. 
+                            -->
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            7. Nochmals den Treiber demontieren
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/vorher-nachher-vergleich.jpg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/vorher-nachher-vergleich.jpg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 8</p>
+                            <h3>Umplatzierung des Antiresonators</h3>
+                            <p>
+                                Entfernen Sie den angebrachten Antiresonator vom Kondensator (siehe Schritt 2) und wählen Sie den nächsten Kondensatoren (per Zufall) aus.
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            8. Umplatzierung des Antiresonators
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/entscheidung.jpg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/entscheidung.jpg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 9</p>
+                            <h3>Probehörung zur Eruierung des "besseren" Kondensators</h3>
+                            <p>
+                                Montieren Sie die Treiber wieder abermals zurück und - beim erneuten Probehören - stellen Sie sich die Frage: "Welcher der optimierten Kondensatoren klang - meines erachtens - besser?".
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            9. Erneutes Probehören
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/kondo-12.jpeg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/kondo-12.jpeg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 10</p>
+                            <h3>Eruierung des "besten" Kondensators</h3>
+                            <p>
+                                Wiederholen Sie die Schritte 3 bis 9, bis Sie den "besten" Kodensator mit Antiresonator &amp; Antismog eruiert haben. <br><br>
+
+                                Wichtig zu bemerken ist, dass Sie den "besten (optimierten) Kondensator" nun <u>nicht</u> mehr entfernen müssen, denn dieser hat - von allen Kodensatoren - das beste Klangergebnis erzielt. 
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz" style="letter-spacing: 0.75px;">
+                            10. Beurteile: Welcher optimierter Kondensator klang "am besten"?
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/kondo-7.jpeg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/kondo-7.jpeg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 11</p>
+                            <h3>Wiederholung des gesamten Prozesses für <u>zweiten</u> Kodensator</h3>
+                            <p>
+                                Nun muss der "beste Kondensator #2" für die Hörprobe festlegt werden. Hierfür müssen Schritte 2 bis 10 nochmals wiederholt werden...
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            11. Bringe einen Antiresonator am <u>zweiten</u> Kodensator an
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/kondo-13.jpeg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/kondo-13.jpeg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">(Optionaler) Schritt 12</p>
+                            <h3><em>Mehr als 2 Kondensatoren</em>?</h3>
+                            <p>
+                                Wenn innerhalb Ihrer Box mehr als 2 Kodensatoren sind, dann müssen Sie die Schritte 2 bis 5 auch noch für den "besten Kondensator #3" durchlaufen.
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            12. Besitzt Ihr Lautsprecher > 2 Kondensatoren?
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+
+                    <div class="gal-item staggered-anim-hidden staggered-anim-card">
+                        <a href="/bilder/optimierung-treiber/oeffnung-17.jpg" class="gallery-img-link">
+                            <img data-lazy="/bilder/optimierung-treiber/oeffnung-17.jpg" alt="Noob" class="lazy">
+                        </a>
+                        <div class="gallery-caption">
+                            <p style="color: red; font-size: 1.25em; margin: 0 0 0.65rem; font-weight: 600;">Schritt 13</p>
+                            <h3>Jeden Schritt wiederholen für restliche Treiber</h3>
+                            <p>
+                                Wenn Sie die ersten 11 Schritte nun auch für die übrig gebliebenen Treiber angewandt haben, schliesst dies die Maximierung des Klanges Ihrer Box ab. Gratulation! 🌟
+                            </p>
+                            <span class="gal-btn">Klick für Foto-Details</span>
+                        </div>
+                        <div class="gal-notiz">
+                            13. Gesamte Optimierung für die restlichen Treiber nach demselben Muster optimieren
+                        </div>
+                    </div>
+                    <!-- 👆 Ende: Gallery-Item -->
+                </div>
+
+            </div>
+        </div>
+        <!-- Ende: "Lightbox-Gallery"-Sektion -->
+
+        <!-- Start: "Botschafts"-Sektion  -->
+        <div class="special">
+            <p>
+                Mit der Maximierung Ihres Lautsprechers kann die Klangleistung Ihrer Box um ein Vielfaches erhöht werden, ohne dass etwas an Ihrem Anlagen-Setup geändert wird.
+            </p>
+        </div>
+        <!-- Ende: "Botschafts"-Sektion -->
+
+        <!-- Start: "Img-Txt"-Sektion -->
+        <div class="img-txt-wrapper">
+            <div class="img-txt-article-container">
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/klang-3.jpg"
+                            alt="Das Bild einer Focal Spectral Lautsprechers, der verbessert wurde."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Klanggewinne der Antiresonatoren an den Strebungen
+                                </h2>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Durch das Anbringen eines Antiresonatoren an den jeweiligen Strebungen im Inneren der Box führt zu einer zwei- bis dreifachen Vergrößerung des Klangvolumens des Lautsprechers (riesiges 3D-Bild und ultrapräzise Positionierung der Instrumentalisten), zu einem tieferen Bass, einer gesteigerten Dynamik und einer Intensität im Mittel-/Hochtonbereich, die bislang noch nicht bekannt waren. 
+                                    </p>
+
+                                    <p>
+                                        <em>
+                                            Kurz gesagt: Der so optimierte Lautsprecher hat kaum noch etwas mit dem Originalmodell zu tun...
+                                        </em>
+                                    </p>
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/klang-4.jpg"
+                            alt="Bild einer Tafel mit Richtungs-Anzeigen, um zu illustrieren, dass es weitere Einsatzmöglichkeiten der Antismog-Kleber und Antiresonatoren gibt (neben der Verbesserung der Hifi Lautsprecher)."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Klanggewinne nach den Massnahmen am Filter</h2>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Dank der Platzierung von Antiresonatoren (inkl. Antismog-Kleber) an den verschiedenen Filtern, werden folgende Verbesserungen bemerkbar:
+                                    </p>
+
+                                    <ul>
+                                        <li>
+                                            Der Bass erreicht nun ein noch unübertroffenes Niveau an Tiefe, Intensität und Kontrast. Begleitet wird dieser von einer Impulsivität, die ihresgleichen sucht.
+                                        </li>
+                                        <li>
+                                            Die Stabilität im Klangbild ist umwerfend: die Künstler und ihre Instrumente werden regelrecht an ihren Platz festgeschraubt. Der Eindruck vom Privatkonzert, war noch nie so präsent, denn die Boxen ermöglichen es nun, die Silouetten der Musiker so präzis darzustellen, als wären diese mit dem Rasiermesser geschnittenen worden!
+                                        </li>
+                                        <li>
+                                            Die Dynamik und das Durchhaltevermögen sind maximiert: der Lautsprecher ist nun wild und explosiv. 
+                                        </li>
+                                    </ul>
+
+                                    <p>
+                                        <em>
+                                            Kurzgefasst: Wäre der Lautsprecher ein Tier, dann ein Löwe, welcher jeder Zeit bereit wäre, jegliche Feinde, die sich ihm in den Weg stellen, mit einem lautstarken Brüllen in die Flucht zu jagen!
+                                        </em>
+                                    </p>
+
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+            </div>
+        </div>
+        <!-- Ende: "Img-Txt"-Sektion -->
+
+        <!-- Start: "Übergangs-Kapitel"-Sektion -->
+        <div class="storytelling-new-chapter-wrapper">
+
+            <div class="flex-desktop-column">
+                <div class="flex-special-storytelling">
+                    <h2 class="h2-storytelling-headlines" style="text-align: center;">Preislisten</h2>
+                    <div class="invisible-story-for-desktop"><span></span></div>
+                </div>
+                <div>
+                    <!-- <h3 class="h3-storytelling-headlines"><em>Etappe 2</em></h3> -->
+                </div>
+            </div>
+            <!-- Ende "row": 1-->
+
+            <div class="grid-desktop-row grid-row">
+                <div class="storytelling-problem-content">
+                    <h3 class="h3-storytelling-problem-content">Entfachen Sie das versteckte Potential Ihres Lautsprechers</h3>
+
+                    <p>
+                        Unabhängig davon, in welcher Preiskategorie sich Ihr Lautsprecher befindet: wir haben für jede Box die passende Lösung.
+                    </p>
+
+                </div>
+                <div class="storytelling-problem-img grid-row">
+                    <img data-lazy="/bilder/optimierung-treiber/money.jpg"
+                        class="storytelling-img lazy" />
+                </div>
+            </div>
+            <!-- Ende "row": 2-->
+
+        </div>
+        <!-- Ende "Übergangs-Kapitel"-Sektion -->
+
+         <!-- Start: "Img-Txt"-Sektion -->
+         <div class="img-txt-wrapper">
+            <div class="img-txt-article-container">
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/optimierung-treiber/start.jpg"
+                            alt="Bild einer Tafel mit Richtungs-Anzeigen, um zu illustrieren, dass es weitere Einsatzmöglichkeiten der Antismog-Kleber und Antiresonatoren gibt (neben der Verbesserung der Hifi Lautsprecher)."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h3 class="img-txt--content-title">Preise für Neu&shy;einsteiger</h3>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        <em>
+                                            Wenn Sie sich selbst davon überzeugen wollen, dass unsere Massnahmen zur Verbesserung des Klangs eines Lautsprecher tatsächlich wirken und effektiv sind, empfehlen wir Ihnen, lediglich 5 Antiresonatoren an den Aussen-Wänden Ihres Lautsprecher zu installieren. 
+                                        </em>
+                                    </p>
+
+                                    <table class="rwd-table">
+                                        <tr class="table-header">
+                                          <th>Produkt</th>
+                                          <th>Kategorie</th>
+                                          <th>Preis</th>
+                                          <th>Link</th>
+                                        </tr>
+                                      <tr class="table-inhalt news">
+                                          <td data-th="Produkt">Vibrationsdämpfung</td>
+                                          <td data-th="Kategorie">Einstieg in die OptimizeAudio Welt</td>
+                                          <td data-th="Preis" style="color: red;">CHF 100</td>
+                                          <td data-th="Link"><a href="/davis-acoustics/balthus-50/" target="_blank">Kaufen</a></td>
+                                        </tr>
+                                  </table>
+
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/optimierung-treiber/preis-2000.jpg"
+                            alt="Das Bild einer Focal Spectral Lautsprechers, der verbessert wurde."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h3 class="img-txt--content-title">Preise für Lautsprecher ≤ CHF 2'000
+                                </h3>
+                                <div class="img-txt--content">
+
+                                    <table class="rwd-table">
+                                        <tr class="table-header">
+                                          <th>Produkt</th>
+                                          <th>Kategorie</th>
+                                          <th>Preis</th>
+                                          <th>Link</th>
+                                        </tr>
+                                      <tr class="table-inhalt news">
+                                          <td data-th="Produkt">Äussere Vibrationsdämpfung</td>
+                                          <td data-th="Kategorie">Etappe 1</td>
+                                          <td data-th="Preis" style="color: red;">CHF 100</td>
+                                          <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                        </tr>
+                                        <tr class="table-inhalt news">
+                                          <td data-th="Produkt">Innere Vibrationsdämpfung</td>
+                                          <td data-th="Kategorie">Etappe 2</td>
+                                          <td data-th="Preis" style="color: red;">CHF 250</td>
+                                          <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                        </tr>
+                                        <tr class="table-inhalt news">
+                                            <td data-th="Produkt">🌟 Maximierung</td>
+                                            <td data-th="Kategorie">Etappe 1 + 2</td>
+                                            <td data-th="Preis" style="color: red;">CHF 350</td>
+                                            <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                          </tr>
+                                  </table>
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/optimierung-treiber/preis-4000.jpg"
+                            alt="Bild einer Tafel mit Richtungs-Anzeigen, um zu illustrieren, dass es weitere Einsatzmöglichkeiten der Antismog-Kleber und Antiresonatoren gibt (neben der Verbesserung der Hifi Lautsprecher)."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h3 class="img-txt--content-title">Preise für Lautsprecher zwischen CHF 4'000 und CHF 10'000</h3>
+                                <div class="img-txt--content">
+
+                                    <table class="rwd-table">
+                                        <tr class="table-header">
+                                          <th>Produkt</th>
+                                          <th>Kategorie</th>
+                                          <th>Preis</th>
+                                          <th>Link</th>
+                                        </tr>
+                                      <tr class="table-inhalt news">
+                                          <td data-th="Produkt">Äussere Vibrationsdämpfung</td>
+                                          <td data-th="Kategorie">Etappe 1</td>
+                                          <td data-th="Preis" style="color: red;">CHF 800</td>
+                                          <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                        </tr>
+                                        <tr class="table-inhalt news">
+                                          <td data-th="Produkt">Innere Vibrationsdämpfung</td>
+                                          <td data-th="Kategorie">Etappe 2</td>
+                                          <td data-th="Preis" style="color: red;">CHF 1'200</td>
+                                          <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                        </tr>
+                                        <tr class="table-inhalt news">
+                                            <td data-th="Produkt">🌟 Maximierung</td>
+                                            <td data-th="Kategorie">Etappe 1 + 2</td>
+                                            <td data-th="Preis" style="color: red;">CHF 2'000</td>
+                                            <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                          </tr>
+                                  </table>
+
+                                  <p>
+                                    <em>
+                                        Durch die Maximierung werden Sie die Klang-Performance Ihres Lautsprechers verdoppeln!
+                                    </em>
+                                  </p>
+
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/optimierung-treiber/preis-15000.jpg"
+                            alt="Bild einer Tafel mit Richtungs-Anzeigen, um zu illustrieren, dass es weitere Einsatzmöglichkeiten der Antismog-Kleber und Antiresonatoren gibt (neben der Verbesserung der Hifi Lautsprecher)."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h3 class="img-txt--content-title">Preise für Lautsprecher zwischen CHF 15'000 und CHF 35'000</h3>
+                                <div class="img-txt--content">
+
+                                    <table class="rwd-table">
+                                        <tr class="table-header">
+                                          <th>Produkt</th>
+                                          <th>Kategorie</th>
+                                          <th>Preis</th>
+                                          <th>Link</th>
+                                        </tr>
+                                      <tr class="table-inhalt news">
+                                          <td data-th="Produkt">Äussere Vibrationsdämpfung</td>
+                                          <td data-th="Kategorie">Etappe 1</td>
+                                          <td data-th="Preis" style="color: red;">CHF 2'000</td>
+                                          <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                        </tr>
+                                        <tr class="table-inhalt news">
+                                          <td data-th="Produkt">Innere Vibrationsdämpfung</td>
+                                          <td data-th="Kategorie">Etappe 2</td>
+                                          <td data-th="Preis" style="color: red;">CHF 3'000</td>
+                                          <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                        </tr>
+                                        <tr class="table-inhalt news">
+                                            <td data-th="Produkt">🌟 <span class="gradient-text-pink">Maximierung</span></td>
+                                            <td data-th="Kategorie">Etappe 1 + 2</td>
+                                            <td data-th="Preis" style="color: red;">CHF 5'000</td>
+                                            <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                          </tr>
+                                  </table>
+
+                                  <p>
+                                    <em>
+                                        Durch die Maximierung werden Sie die Klang-Performance Ihres Lautsprechers um bis zum Dreifachen verbessern!
+                                    </em>
+                                  </p>
+
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/optimierung-treiber/preis-40000.jpg"
+                            alt="Bild einer Tafel mit Richtungs-Anzeigen, um zu illustrieren, dass es weitere Einsatzmöglichkeiten der Antismog-Kleber und Antiresonatoren gibt (neben der Verbesserung der Hifi Lautsprecher)."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h3 class="img-txt--content-title">Preise für Lautsprecher > CHF 40'000</h3>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Für Kunden mit Boxen in sehr kostenaufwändigen Kategorien empfehlen wir lediglich eine Maximierung der Lautsprecher, denn - bei den Preisen solcher Musiksystemen - wird die vollständige Optimierung nur wenige Prozent vom totalen Verkaufspreis ausmachen.
+                                    </p>
+
+                                    <table class="rwd-table">
+                                        <tr class="table-header">
+                                          <th>Produkt</th>
+                                          <th>Kategorie</th>
+                                          <th>Preis</th>
+                                          <th>Link</th>
+                                        </tr>
+                                        <tr class="table-inhalt news">
+                                            <td data-th="Produkt">🌟 Maximierung</td>
+                                            <td data-th="Kategorie">Etappe 1 + 2</td>
+                                            <td data-th="Preis">Auf Anfrage</td>
+                                            <td data-th="Link"><a href="#" target="_blank">Kaufen</a></td>
+                                          </tr>
+                                  </table>
+
+                                  <p>
+                                    <em>
+                                       Durch die Maximierung kann die Klang-Leistung Ihres Lautsprechers um bis zum Dreifachen gesteigert werden!
+                                    </em>
+                                  </p>
+
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/antiresonatoren-auf-focal-spectral-2.jpg"
+                            alt="Das Bild einer Focal Spectral Lautsprechers, der verbessert wurde."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Interesse an der Verbesserung Ihres Lautsprechers?
+                                </h2>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Haben wir Ihr Interesse geweckt?
+                                    </p>
+
+                                    <p>
+                                        <em>
+                                            Testen Sie diese Klangoptimierungs-Massnahme während 1 Monat in Ihrem
+                                            System. So können Sie risikolos entscheiden, ob sich diese Investition für
+                                            Ihre Hifi Anlage lohnt oder nicht.
+                                        </em>
+                                    </p>
+
+                                    <p>
+                                        <em>
+                                            Kontaktieren Sie uns ungeniert!
+                                        </em>
+                                    </p>
+
+                                    <div class="knopf-margin">
+                                        <a href="tel:+41786316206" style="text-decoration: none;"></a>
+                                        <div class="knopf knopf-zwei">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                                class="not-in-title-svg" style="vertical-align: unset;">
+                                                <path
+                                                    d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z" />
+                                            </svg> &nbsp;&nbsp; +41 78 631 62 06
+                                        </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+
+                <div class="img-txt-row-container">
+                    <div class="img-txt--img-container">
+                        <!-- style="background-image:
+                        url(bilder/optimierung-vor-ort/audiosystem-focal-viva-utopia-evo.jpg)" -->
+                        <img data-lazy="/bilder/choice.jpg"
+                            alt="Bild einer Tafel mit Richtungs-Anzeigen, um zu illustrieren, dass es weitere Einsatzmöglichkeiten der Antismog-Kleber und Antiresonatoren gibt (neben der Verbesserung der Hifi Lautsprecher)."
+                            class="flex-background-img lazy">
+                    </div>
+                    <!--after pseudo img-txt--img-container-->
+                    <div class="img-txt--txt-container">
+                        <div class="img-txt--content-container">
+                            <div class="img-txt--centering-content">
+                                <h2 class="img-txt--content-title">Weitere Einsatzmöglichkeiten</h2>
+                                <h3 class="img-txt--subtitle">Entfachen Sie das Biest in Ihrer Anlage und sparen Sie
+                                    sich dabei das Geld einer Neuanschaffung.</h3>
+                                <div class="img-txt--content">
+
+                                    <p>
+                                        Die Antismog-Kleber &amp; Antiresonator von OptimizeAudio können nicht nur für
+                                        das verbessern der Lautsprecher herangezogen werden.
+                                    </p>
+
+                                    <p>
+                                        Mit diesem Zubehör lässt sich auch:
+                                    </p>
+
+                                    <ul>
+                                        <li>Eine bestehende <a href="https://audiophil-dreams.com/klangoptimierung/hifi-elektronik-verbessern/">Hifi
+                                                Elektronik verbessern</a> (Antismog-Kleber &amp; Antiresonator).</li>
+                                        <li>Ihre <a href="https://audiophil-dreams.com/klangoptimierung/raumakustik-verbessern/">Raumakustik
+                                                verbessern</a> (Antiresonator).</li>
+                                    </ul>
+
+                                    <p>
+                                        <em>
+                                            So können Sie das versteckte Klangpotential Ihrer Anlage Schritt für Schritt
+                                            weiter erhöhen, ohne dass Sie gezwungen sind, eine Ihrer aktuellen
+                                            Hifi-Komponenten zu ersetzen. Der Vorteil dabei? Diese Massnahme ist
+                                            deutlich günstiger, als die eines Beschaffung von neuen Elektroniken oder
+                                            der Einsatz von grösseren Bassattrappen, Schaumstoffen, oder die Anschaffung
+                                            einer akustischen Decke in Ihrem Raum.
+                                        </em>
+                                    </p>
+
+                                </div>
+                                <!--end img-txt--content div-->
+                            </div>
+                            <!--end img-txt--centering-content div-->
+                        </div>
+                        <!--end img-txt--content-container div-->
+                        <!--after pseudo img-txt--txt-container-->
+                    </div>
+                    <!--end img-txt--txt-container div-->
+                </div>
+                <!--end img-txt-row-container div-->
+
+                
+
+            </div>
+        </div>
+        <!-- Ende: "Img-Txt"-Sektion -->
+
+       
+
+        <!-- Start of the footer-section -->
+        <footer>
+            <div class="footer page">
+
+                <div class="adresseWrap fade-up">
+                    <div class="adresseUn">
+                        <h2>Allgemeine Informationen</h2>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="not-in-title-svg">
+                                <path
+                                    d="M168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2H168.3zM192 256C227.3 256 256 227.3 256 192C256 156.7 227.3 128 192 128C156.7 128 128 156.7 128 192C128 227.3 156.7 256 192 256z" />
+                            </svg> Seestrasse 247, 8713 Uerikon
+                        </p>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="not-in-title-svg">
+                                <path
+                                    d="M256 352c-16.53 0-33.06-5.422-47.16-16.41L0 173.2V400C0 426.5 21.49 448 48 448h416c26.51 0 48-21.49 48-48V173.2l-208.8 162.5C289.1 346.6 272.5 352 256 352zM16.29 145.3l212.2 165.1c16.19 12.6 38.87 12.6 55.06 0l212.2-165.1C505.1 137.3 512 125 512 112C512 85.49 490.5 64 464 64h-416C21.49 64 0 85.49 0 112C0 125 6.01 137.3 16.29 145.3z" />
+                            </svg> <a href="mailto:thierry.mayer@gmx.ch">thierry.mayer@gmx.ch</a>
+                        </p>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="not-in-title-svg">
+                                <path
+                                    d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z" />
+                            </svg> 044 796 23 90 oder 078 631 62 06
+                        </p><br>
+
+                        <h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="in-title-svg">
+                                <path
+                                    d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z" />
+                            </svg> Öffnungs&shy;zeiten
+                        </h2>
+                        <p>
+                            Dienstag bis Samstag 14:00-18:00 oder auf Vereinbarung (schreiben Sie uns einfach eine Email
+                            oder rufen Sie uns an).
+                        </p><br>
+
+                        <h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="in-title-svg">
+                                <path
+                                    d="M192 256V192H240C257.7 192 272 206.3 272 224C272 241.7 257.7 256 240 256H192zM384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM336 224C336 170.1 293 128 240 128H168C145.9 128 128 145.9 128 168V352C128 369.7 142.3 384 160 384C177.7 384 192 369.7 192 352V320H240C293 320 336 277 336 224z" />
+                            </svg> Parkplatz
+                        </h2>
+                        <p>Falls der Platz vor unserer Tür besetzt ist, parkieren Sie bitte beim Bahnhof-Parkplatz
+                            Uerikon,
+                            Stationsstrasse 5, 8713 Uerikon (ca. 4 min. zu Fuss von uns entfernt). Nutzen Sie den
+                            Fussweg
+                            unterhalb der
+                            Zugschienen namens Schoorensteig, Richtung Zürichsee. Wenn Sie an der Seestrasse angekommen
+                            sind,
+                            gehen Sie
+                            nach links Richtung Rapperswil. In ca. 200m stehen Sie vor unserer Tür.</p>
+                    </div>
+
+                    <div id="maps" class="maps-margin fade-up"><iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2709.05955626146!2d8.752618815138595!3d47.23498092156904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ab0fcd997227f%3A0x233ae15915460b8f!2sSeestrasse+247%2C+8713+Uerikon!5e0!3m2!1sde!2sch!4v1549462732414"
+                            width="600" height="450" frameborder="0" style="border:0" allowfullscreen
+                            title="Location of ExxeptionAudio"></iframe>
+                    </div>
+
+                </div>
+                <!--Ende AdresseWrap-->
+
+                <div class="last-container">
+                    <div class="copy-item">&copy; 2022 OptimizeAudio.com</div>
+                    <div class="link-item">
+                        <!-- <div class="nav-item"><a href="/unternehmen/unser-team.html">Unser Team</a></div> -->
+                        <div><a href="/produkte/">Produkte</a></div>
+                        <div><a href="/impressum.html">Impressum</a></div>
+                        <div><a href="/datenschutz.html">Datenschutz</a></div>
+                    </div>
+                </div>
+
+            </div>
+            <!--end class "footer" -->
+        </footer>
+        <!-- end of the footer-section -->
+
+    </main>
+
+    <!-- Lightbox (Achtung: Reihenfolge der beiden Scripts so lassen! Der "order" spielt hier eine Rolle ;P )-->
+    <script src="/lightbox.js"></script>
+    <script src="/activate-lightbox.js"></script>
+
+    <!-- Animations -->
+    <script src="/staggered-animations.js"></script>
+
+
+
+</body>
+
+</html>

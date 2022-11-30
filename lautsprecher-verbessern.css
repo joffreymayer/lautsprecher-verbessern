@@ -1,0 +1,1341 @@
+/** -- Allgemein nützliches -- **/
+.py-7 {
+    padding: 7rem 0;
+}
+
+.vh-100 {
+    min-height: 100vh;
+    /*Nice trick, which ensures to have AT LEAST a height of the viewport, but it can be of greater height, which is nice! */
+}
+/* -- Ende: Allgemein nützliches -- */
+
+/** -- Start: CSS for Lazy-Load Animation -- **/
+.lazy {
+	/* For Animation of Lazy-Loading */
+	transform: translateX(0);
+	opacity: 0;
+	transition: all 1s; 
+	/* 
+	*/
+}
+
+.lazy-fade {
+	transform: translateX(0);
+	opacity: 1.0;
+	transition: all 1s;
+} 
+/* -- Ende: CSS for Lazy-Load Animation -- */
+
+/** -- Start: "Botschaft"-Sektion -- **/
+
+.special{
+  border-color: #FFF;
+  border-style: solid;
+  border-left: thick;
+  border-right: thick;
+  border-width: 2px;
+  padding: 20px 10px;
+  margin: 5%;
+  color: #FFF;
+}
+
+.special p {
+text-align: center;
+}
+
+/*Phone Styles*/
+@media only screen and (max-width: 400px) {
+  .special p {
+      font-size: 1.25em;
+  }
+}
+
+/*Tablet Styles*/
+@media only screen and (min-width: 401px) and (max-width: 1297px) { /* Key: Mit den 1'297px wird die Navigation zum Drop-Down Menü. */
+  .special p {
+      font-size: 1.5em;
+  }
+}
+
+/*Desktop-Styles*/
+@media only screen and (min-width: 1298px) {
+  .special p {
+      font-size: 1.75em;
+  }
+}
+/* - Ende: "Botschaft"-Sektion - */
+
+/** -- Start: "Übergangs"-Sektion -- **/
+:root{
+    --fixed-width: 512px; /* Goal hier: I want a fixed AR of 1:1! --> Dient der Übergangs-Sektion... */
+    --fixed-height: 512px; /* Goal hier: I want a fixed AR of 1:1! --> Dient der Übergangs-Sektion... */
+    --fixed-width-tablet: 34.9vw;/*--> Dient der Übergangs-Sektion... */
+    --fixed-height-tablet: 34.9vw;/*--> Dient der Übergangs-Sektion... */
+    --fixed-width-phone: 250px;/*--> Dient der Übergangs-Sektion... */
+    --fixed-height-phone: 250px;/*--> Dient der Übergangs-Sektion... */
+}
+
+body {
+    counter-reset: bericht; /* Für CSS-Counter --> Note: "bericht" ist ein random von mir gewählter Name... */
+}
+
+.storytelling-new-chapter-wrapper{/* This is our main-wrapper that wraps everything... */
+    padding: 80px 90px;
+    background-color: #EAEADA;
+    min-height: 100vh;
+}
+.storytelling-img{
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-width: 100%;
+	border-style: none;
+	display: block;
+}
+.flex-desktop-column{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid orangered;
+}
+.grid-desktop-row{
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    grid-gap: 40px;
+}
+.grid-desktop-row > *{ /* This targets: All direct children --> hier: 2 <div>'s, welche einen Zwischen-Abstand benötigen... */
+    margin: 45px;
+}
+.grid-desktop-row div:nth-child(1) {
+    padding: 0px 25px;
+}
+.invisible-story-for-desktop{
+    display: none;
+}
+.storytelling-problem-img{ /*The image's Container will get an Aspect-Ratio of 1:1... */
+    height: var(--fixed-height); 
+    width: var(--fixed-width);
+}
+.storytelling-problem-img img{ /*The image itself should behave like a BG-image... */
+    object-fit: cover;
+}
+
+@media(max-width: 1220px){ /* Breakpoints for the "Übergangssektion" to adapt the image's (fixed) 1:1 AR image... */
+    .storytelling-problem-img{ /*The image's Container will get an Aspect-Ratio of 1:1... */
+        height: var(--fixed-height-tablet); 
+        width: var(--fixed-width-tablet);
+    }
+}
+@media(max-width: 768px){ /* Breakpoint to switch to a portrait-layout) ... */
+    .storytelling-new-chapter-wrapper{
+        padding: 20px 5px 3.5rem;
+    }
+    .flex-special-storytelling{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .flex-special-storytelling span{
+        color: #D3A468;
+        font-size: clamp(20vh, 30vh, 60vh);
+    }
+    .grid-desktop-row > *{ /* This targets: All direct children --> hier: 2 <div>'s, welche einen Zwischen-Abstand benötigen... */
+        margin: 0px;
+    }
+    .flex-desktop-column{
+        flex-direction: row-reverse;
+        border-bottom: none;
+    }
+    .grid-desktop-row{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 25px;
+    }
+    /* .grid-desktop-row:nth-child(even) .grid-row:last-child {
+      order:-1;
+    } */
+    .storytelling-problem-img{
+        justify-self: center;
+    }
+    .invisible-story-for-desktop{
+        display: block;
+    }
+    .invisible-story-for-desktop span::before{
+        counter-increment: bericht;
+        content: counter(bericht);
+    }
+    .h2-storytelling-headlines{
+        padding: 0 14px;
+        width: 75%;
+    }
+    .h3-storytelling-headlines{
+        display: none;
+    }
+    .storytelling-problem-img{ /*The image's Container will get an Aspect-Ratio of 1:1... */
+        height: var(--fixed-height-phone); 
+        width: var(--fixed-width-phone);
+    }
+}
+
+.h2-storytelling-headlines{ /* Haupttitel der Sektion */
+    font-size: clamp(20px, 10vw, 10vh);
+    /* text-align: center; */
+    margin-block-start: 0;
+    margin-block-end: 8px;
+    padding-bottom: 1.5%;
+}
+.h3-storytelling-headlines{
+    color: #0000007c;
+}
+.h3-storytelling-headlines::before{
+    counter-increment: bericht;
+    content: counter(bericht) ") ";
+    font-style: italic;
+}
+.h3-storytelling-problem-content{ /* Artikel-Titel */
+    font-size: 5vh;
+    color: red;
+    /* text-align: center; */
+}
+.storytelling-problem-content p{ /*Styling des Text-Paragraphens..*/
+    margin-top: 5%;
+    line-height: 1.5;
+}
+
+/* -- Ende: "Übergangs"-Sektion -- */
+
+
+
+  /** -- Start: "Img-Text"-Section -- **/
+.img-txt-wrapper{
+  position: relative;
+  min-height: 100vh;
+}
+.img-txt-article-container{
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  background-color: black;
+}
+.img-txt-article-container::before{
+  display: table;
+  content: " ";
+}
+.img-txt-row-container:nth-child(odd){ /* <-- DAS ist die CSS-Klasse, welches den "links-und-rechts"-Effekt bewirkt! */
+  display: flex;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+}
+.img-txt-row-container:nth-child(even) {/* <-- DAS ist die andere CSS-Klasse, welches den "links-und-rechts"-Effekt bewirkt! */
+  display: flex;
+  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+}
+.img-txt--img-container{
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  position: relative;
+  height: auto;
+  width: 50%;
+  display: flex;
+}
+.img-txt--img-container img{
+  object-fit: cover;
+}
+.img-txt--txt-container{
+  display: flex;
+  background-color: #fff;
+  color: #1e2423;
+  width: 50%;
+}
+/* -- Start: Layout-Shift Problem */
+.img-txt--img-container::after{
+  content: "";
+  display: block;
+  padding-bottom: 100%; /* <-- Hack for "img": This "trick" is for placing a "placeholder-element" when lazy-loading the images: it should prevent a layout-shift! =) */
+}
+.img-txt--txt-container::after{
+  content: "";
+  display: block;
+  padding-bottom: 100%; /* <-- Erweiterung des obigen Hacks: This "trick" is for placing a "placeholder-element" [on the txt-part] when lazy-loading the images: it should prevent a layout-shift! =) */
+}
+/* -- Ende: Layout-Shift Problem */
+.img-txt--content-container{
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+  padding: 5% 17%;
+}
+.img-txt--centering-content{
+  padding-right: 10px;
+  overflow-y: auto;
+  max-height: 100%;
+}
+.img-txt--content-title{
+  font-size: 30px;
+  margin: 0;
+  line-height: 1.1;
+  margin-block-start: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+.img-txt--subtitle{
+  font-size: 16px;
+  color: #F30;
+  margin: 0;
+  display: block;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+.img-txt--content {
+  margin-top: 40px;
+  line-height: 25px;
+}
+.img-txt--content p {
+  text-align: left;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.img-txt--content a {
+  color: blue;
+  text-decoration: none;
+}
+
+/* -- Start: Media-Queries */
+@media only screen and (min-width: 1140px) and (max-width: 1200px){
+  .img-txt--content-container{ /* Overall Wrapper der ["50% width"] Text-Spalte */
+      padding: 5% 11.5%;
+  }
+
+  .img-txt--content{ /* Content-Wrapper (below the <h2> & <h3>-Titel !) */
+      line-height: 25px;
+  }
+  .img-txt--content p, .img-txt--content ul li, .img-txt--content table {
+      font-size: 0.9em;
+  }
+  .img-txt--content ul ul li {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 990px) and (max-width: 1271px){
+  .img-txt--content-container{ /* Overall Wrapper der ["50% width"] Text-Spalte */
+      padding: 5% 10%;
+  }
+
+  .img-txt--content{ /* Content-Wrapper (below the <h2> & <h3>-Titel !) */
+      line-height: 20px;
+  }
+  .img-txt--content p, .img-txt--content ul li, .img-txt--content table {
+      font-size: 0.8em;
+  }
+  .img-txt--content ul ul li {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 989px){
+  .img-txt-row-container{
+      flex-wrap: wrap;
+  }
+  .img-txt--img-container{
+      width: 100%;
+  }
+  .img-txt--txt-container{
+      width: 100%;
+      align-self: flex-start;
+  }
+  .img-txt--content-container{
+      padding: 10% 15%;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+  .img-txt-article-container {
+      max-width: 760px;
+      margin: auto;
+  }
+}
+@media only screen and (max-width: 479px){
+  .img-txt-article-container{
+      max-width: 540px;
+      margin: auto;
+  }
+  .img-txt-row-container{
+      flex-wrap: wrap;
+  }
+  .img-txt--img-container{
+      width: 100%;
+  }
+  .img-txt--txt-container{
+      width: 100%;
+      align-self: flex-start;
+  }
+  .img-txt--content-container{
+      padding: 10% 15%;
+  }
+}
+/* -- Ende: "Img-Txt"-Sektion -- */
+
+/** -- Start: "Knopf"-Sektion -- **/
+.knopf-content {
+	margin-top: 60px;
+}
+
+.knopf {
+	padding: 16px 25px;
+	border-radius: 50px;
+	/*-- background-color: grey --*/
+	font-size: 1.25em;
+	font-weight: 700;
+	cursor: pointer;
+	min-width: 170px; /*-- Macht, dass die Knöpfe bei "Marken" alle gleich gross sind (bei Handys) --*/
+	text-align: center;
+	color: black;
+}
+
+.knopf-eins {
+	background-color: #A6FFF2; /* 1) Prossibility: #A6FFF2; 2) Possibility: #ff3860;*/
+}
+
+.knopf-zwei {
+	background-color: #E2f0f7; /*1) Prossibility: #E2f0f7; 2) Possibility: #FFE4E5*/
+}
+
+.knopf-drei {
+	background-color: grey;
+}
+
+.knopf-eins:hover {
+	box-shadow: 0 0 0 5px rgba(138, 205, 195, .5); /*Schwarzer Schatten um den Knopf*/
+	color: black;
+}
+
+.knopf-zwei:hover {
+	box-shadow: 0 0 0 5px rgba(205, 218, 225, 1); /*Schwarzer Schatten um den Knopf*/
+	color: black;
+}
+
+.knopf-drei:hover {
+	box-shadow: 0 0 0 5px rgba(0,0,0,.2); /*Schwarzer Schatten um den Knopf*/
+	color: black;
+}
+
+.knopf:visited, .knopf:link  {
+	color: black;
+	text-decoration: none;
+}
+
+.knopf-margin {
+	margin: 50px;
+	display: flex;
+}
+/** -- Ende: "Knopf"-Sektion -- **/
+
+/** -- Start: "Lighbox-Gallery"-Sektion -- **/
+
+.lightbox-wrapper {
+  min-height: 100vh;
+  text-align: center;
+  display: block;
+  background-color: #fff;
+  /* border: 1px solid red; */
+}
+
+.lightbox-wrapper h1, .lightbox-wrapper h2, .lightbox-wrapper h3 {
+  font-weight: 300;
+  line-height: 1.375;
+  letter-spacing: -.05em;
+  margin: 0 0 1rem;
+}
+
+.lightbox-wrapper h2 {
+  font-size: 2.25rem;
+  color: #000;
+}
+
+.lightbox-wrapper p {
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+.lightbox-title-container {
+  padding: 7rem 3.5rem 5rem;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 64rem;
+}
+
+@media screen and (max-width: 1680px) {
+  .lightbox-title-container {
+      padding: 5rem 2.5rem 3rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .lightbox-title-container {
+      padding: 4rem 4rem 2rem;
+  }
+}
+
+/* @media screen and (min-width: 1280px) {
+  .lightbox-wrapper p {
+      line-height: 1.5;
+  }
+} */
+
+@media screen and (max-width: 980px) {
+  .lightbox-title-container {
+      padding: 4.5rem 3rem 2.5rem;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .lightbox-title-container {
+      padding: 3rem 2rem 1rem;
+  }
+}
+
+.gallery {
+  overflow: hidden;
+  /* ! ACHTUNG: Should be "inline"-styling... */
+}
+
+.lightbox-wrapper .gallery {
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  display: -moz-flex;
+  /* Fallback */
+  display: -webkit-flex;
+  /* Fallback */
+  display: -ms-flex;
+  /* Fallback */
+  -moz-align-items: center;
+  /* Fallback */
+  -webkit-align-items: center;
+  /* Fallback */
+  -ms-align-items: center;
+  /* Fallback */
+  -moz-flex-wrap: wrap;
+  /* Fallback */
+  -webkit-flex-wrap: wrap;
+  /* Fallback */
+  -ms-flex-wrap: wrap;
+  /* Fallback */
+  -moz-justify-content: center;
+  /* Fallback */
+  -webkit-justify-content: center;
+  /* Fallback */
+  -ms-justify-content: center;
+  /* Fallback */
+}
+
+.gal-item {
+  width: 33.33333333%;
+  /* <-- Noob: THIS value can be set differently: it depends on how many items per row you want for your gallery! 🤓*/
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  border: 1px solid yellow;
+}
+
+.gal-item:nth-last-child(1){ /* <- !Eventuell einfügen?: nth-last-child(2). nth-last-child(3), etc...*/
+  width: 100%; /* <- THIS is the value you will need to change */
+  height: 75vh;
+  /* height: 550px; */
+
+}
+
+@media screen and (max-width: 1180px) { /* !ursprünglich: 980px */
+  .gal-item {
+      width: 50%;
+      /* <-- THIS will make the Gallery to a "2-Spaltiges" Layout (auf Desktop: 3-Spaltig...) */
+  }
+}
+
+@media screen and (max-width: 755px) { /* !ursprünglich: 580px */
+  .gal-item {
+      width: 100%;
+      /* <-- THIS will make the Gallery to a "1-Spaltiges" Layout (auf Tablets: 2-Spaltig...) */
+  }
+  .gal-item:nth-last-child(1) {
+      height: auto;
+  }
+}
+
+.gallery-img-link {
+  display: block;
+  color: #fff;
+  text-decoration: underline;
+  width: 100%;
+  border-radius: 0;
+  transition: opacity .2s ease-in-out;
+  cursor: pointer;
+  -moz-transition: opacity .2s ease-in-out;
+  /* Fallback */
+  -webkit-transition: opacity .2s ease-in-out;
+  /* Fallback */
+  -ms-transition: opacity .2s ease-in-out;
+  /* Fallback */
+  height: 100%;
+}
+
+.gallery-img-link img {
+  display: block;
+  width: 100%;
+  border-radius: 0;
+  transition: opacity .75s ease-in-out;
+  transition-delay: 4.8s;
+  -moz-transition: opacity .75s ease-in-out;
+  /* Fallback */
+  -webkit-transition: opacity .75s ease-in-out;
+  /* Fallback */
+  -ms-transition: opacity .75s ease-in-out;
+  /* Fallback */
+  -moz-transition-delay: 4.8s;
+  /* Fallback */
+  -webkit-transition-delay: 4.8s;
+  /* Fallback */
+  -ms-transition-delay: 4.8s;
+  /* Fallback */
+  height: 100%;
+}
+
+.gallery-img-link img:nth-child(1) {
+  transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -ms-transition-delay: 0s;
+}
+
+.gallery-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  background-color: rgba(0, 0, 0, .5);
+  padding: 2rem;
+  z-index: 1;
+  font-size: .8rem;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .2s ease-in-out;
+  display: -moz-flex;
+  /* Fallback */
+  display: -webkit-flex;
+  /* Fallback */
+  display: -ms-flex;
+  /* Fallback */
+  -moz-align-items: center;
+  /* Fallback */
+  -webkit-align-items: center;
+  /* Fallback */
+  -ms-align-items: center;
+  /* Fallback */
+  -moz-flex-direction: column;
+  /* Fallback */
+  -webkit-flex-direction: column;
+  /* Fallback */
+  -ms-flex-direction: column;
+  /* Fallback */
+  -moz-justify-content: center;
+  /* Fallback */
+  -webkit-justify-content: center;
+  /* Fallback */
+  -ms-justify-content: center;
+  /* Fallback */
+  -moz-transition: opacity .2s ease-in-out;
+  /* Fallback */
+  -webkit-transition: opacity .2s ease-in-out;
+  /* Fallback */
+  -ms-transition: opacity .2s ease-in-out;
+  /* Fallback */
+}
+
+.gallery-caption>* {
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.gallery-caption h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (hover: hover) { /* targets devices that CAN hover */
+
+  /* body {
+      background-color: steelblue;
+  } */
+
+  .gallery-caption {
+      opacity: 0;
+      /* We need this for the Hover-Effect to happen on Screens that allow for "Hover". */
+  }
+
+  .gal-item:hover .gallery-caption {
+      /*Hovering-Effekt*/
+      opacity: 1;
+  }
+
+}
+
+@media (hover: none){ /* targets devices that CANNOT hover */
+  .gal-notiz{
+      display: none;
+  }
+}
+
+.gal-notiz{
+  position: absolute;
+  top: 0;
+  left: 1px;
+  padding: 10px;
+  border-radius: 5%;
+  color: #fff;
+  font-weight: 600;
+  font-size: small;
+  letter-spacing: 1.5px;
+  /* text-transform: uppercase; */
+  background-color: rgba(0, 0, 0, 0.574);
+  z-index: 2;
+}
+
+
+@media screen and (max-width: 1280px) {
+  .gallery-caption {
+      padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-caption {
+      padding: 1rem;
+  }
+}
+
+.gal-btn{
+  border: 1px solid white;
+  border-radius: 2.5%;
+  padding: 5px;
+}
+
+
+/* -- ab hier: Lighthouse-Effekte -- */
+body.hidden-scroll {
+  overflow: hidden;
+}
+
+.sl-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0.7;
+  display: none;
+  z-index: 1035;
+}
+
+.sl-wrapper {
+  z-index: 1040;
+}
+
+.sl-wrapper * {
+  box-sizing: border-box;
+}
+
+.sl-wrapper button {
+  border: 0 none;
+  background: transparent;
+  font-size: 28px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.sl-wrapper button:hover {
+  opacity: 0.7;
+}
+
+.sl-wrapper .sl-close {
+  display: none;
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  z-index: 10060;
+  margin-top: -14px;
+  margin-right: -14px;
+  height: 44px;
+  width: 44px;
+  line-height: 44px;
+  font-family: Arial, Baskerville, monospace;
+  color: #fff;
+  font-size: 3rem;
+}
+
+.sl-wrapper .sl-close:focus {
+  outline: none;
+}
+
+.sl-wrapper .sl-counter {
+  display: none;
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  z-index: 1060;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.sl-wrapper .sl-navigation {
+  width: 100%;
+  display: none;
+}
+
+.sl-wrapper .sl-navigation button {
+  position: fixed;
+  top: 50%;
+  margin-top: -22px;
+  height: 44px;
+  width: 22px;
+  line-height: 44px;
+  text-align: center;
+  display: block;
+  z-index: 10060;
+  font-family: Arial, Baskerville, monospace;
+  color: #fff;
+}
+
+.sl-wrapper .sl-navigation button.sl-next {
+  right: 5px;
+  font-size: 2rem;
+}
+
+.sl-wrapper .sl-navigation button.sl-prev {
+  left: 5px;
+  font-size: 2rem;
+}
+
+.sl-wrapper .sl-navigation button:focus {
+  outline: none;
+}
+
+@media (min-width: 35.5em) {
+  .sl-wrapper .sl-navigation button {
+      width: 44px;
+  }
+
+  .sl-wrapper .sl-navigation button.sl-next {
+      right: 10px;
+      font-size: 3rem;
+  }
+
+  .sl-wrapper .sl-navigation button.sl-prev {
+      left: 10px;
+      font-size: 3rem;
+  }
+}
+
+@media (min-width: 50em) {
+  .sl-wrapper .sl-navigation button {
+      width: 44px;
+  }
+
+  .sl-wrapper .sl-navigation button.sl-next {
+      right: 20px;
+      font-size: 3rem;
+  }
+
+  .sl-wrapper .sl-navigation button.sl-prev {
+      left: 20px;
+      font-size: 3rem;
+  }
+}
+
+.sl-wrapper.sl-dir-rtl .sl-navigation {
+  direction: ltr;
+}
+
+.sl-wrapper .sl-image {
+  position: fixed;
+  -ms-touch-action: none;
+  touch-action: none;
+  z-index: 10000;
+}
+
+.sl-wrapper .sl-image img {
+  margin: 0;
+  padding: 0;
+  display: block;
+  border: 0 none;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 35.5em) {
+  .sl-wrapper .sl-image img {
+      border: 0 none;
+  }
+}
+
+@media (min-width: 50em) {
+  .sl-wrapper .sl-image img {
+      border: 0 none;
+  }
+}
+
+.sl-wrapper .sl-image iframe {
+  background: #000;
+  border: 0 none;
+}
+
+@media (min-width: 35.5em) {
+  .sl-wrapper .sl-image iframe {
+      border: 0 none;
+  }
+}
+
+@media (min-width: 50em) {
+  .sl-wrapper .sl-image iframe {
+      border: 0 none;
+  }
+}
+
+.sl-wrapper .sl-image .sl-caption {
+  display: none;
+  padding: 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sl-wrapper .sl-image .sl-caption.pos-top {
+  bottom: auto;
+  top: 0;
+}
+
+.sl-wrapper .sl-image .sl-caption.pos-outside {
+  bottom: auto;
+}
+
+.sl-wrapper .sl-image .sl-download {
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: #000;
+  z-index: 1060;
+}
+
+.sl-spinner {
+  display: none;
+  border: 5px solid #333;
+  border-radius: 40px;
+  height: 40px;
+  left: 50%;
+  margin: -20px 0 0 -20px;
+  opacity: 0;
+  position: fixed;
+  top: 50%;
+  width: 40px;
+  z-index: 1007;
+  -webkit-animation: pulsate 1s ease-out infinite;
+  -moz-animation: pulsate 1s ease-out infinite;
+  -ms-animation: pulsate 1s ease-out infinite;
+  -o-animation: pulsate 1s ease-out infinite;
+  animation: pulsate 1s ease-out infinite;
+}
+
+.sl-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+.sl-transition {
+  transition: -moz-transform ease 200ms;
+  transition: -ms-transform ease 200ms;
+  transition: -o-transform ease 200ms;
+  transition: -webkit-transform ease 200ms;
+  transition: transform ease 200ms;
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+      transform: scale(0.1);
+      opacity: 0.0;
+  }
+
+  50% {
+      opacity: 1;
+  }
+
+  100% {
+      transform: scale(1.2);
+      opacity: 0;
+  }
+}
+
+@keyframes pulsate {
+  0% {
+      transform: scale(0.1);
+      opacity: 0.0;
+  }
+
+  50% {
+      opacity: 1;
+  }
+
+  100% {
+      transform: scale(1.2);
+      opacity: 0;
+  }
+}
+
+@-moz-keyframes pulsate {
+  0% {
+      transform: scale(0.1);
+      opacity: 0.0;
+  }
+
+  50% {
+      opacity: 1;
+  }
+
+  100% {
+      transform: scale(1.2);
+      opacity: 0;
+  }
+}
+
+@-o-keyframes pulsate {
+  0% {
+      transform: scale(0.1);
+      opacity: 0.0;
+  }
+
+  50% {
+      opacity: 1;
+  }
+
+  100% {
+      transform: scale(1.2);
+      opacity: 0;
+  }
+}
+
+@-ms-keyframes pulsate {
+  0% {
+      transform: scale(0.1);
+      opacity: 0.0;
+  }
+
+  50% {
+      opacity: 1;
+  }
+
+  100% {
+      transform: scale(1.2);
+      opacity: 0;
+  }
+}
+/* -- Ende: "Lighbox-Gallery"-Sektion -- */
+
+/** -- Start: "Staggered-Animations"-Sektion **/
+.staggered-anim-hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show-staggered-anim {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.staggered-anim-card:nth-child(2) {
+  transition-delay: 200ms;
+}
+
+.staggered-anim-card:nth-child(3) {
+  transition-delay: 400ms;
+}
+
+/* 
+  > Additonal element with staggered animation : `.staggered-anim-card:nth-child(3)`
+  > etc... --> for more Animations ... 
+*/
+
+/** -- Ende: "Staggered-Animations"-Sektion **/
+
+/** -- Start: "Tabellen"-Sektion -- */
+
+table {
+  border-collapse: collapse;
+  /*sehr wichtig, sonst funktioniert der "border" nicht für die <tr>-Tags!!*/
+}
+
+.rwd-table {
+  margin: auto;
+  min-width: 280px;
+  /*adjust to your needs*/
+}
+
+tbody {
+  display: table;
+  width: 100%;
+}
+
+@media (min-width: 468px) {
+  tbody {
+      display: table-row-group;
+  }
+}
+
+tr {
+  display: table-row-group;
+}
+
+@media (min-width: 468px) {
+  tr {
+      display: table-row;
+  }
+}
+
+th {
+  display: none;
+  /*for accessibility, use a visually hidden method here instead! Thanks, reddit!*/
+}
+
+td {
+  display: table-row;
+}
+
+td:before {
+  content: attr(data-th)": ";
+  /*who knew you could do this? The internet, that's who.*/
+  font-weight: bold;
+  padding: .2em .5em;
+  display: table-cell;
+  /*optional stuff to make it look nicer*/
+}
+
+@media (min-width: 468px) {
+  td:before {
+      display: none;
+  }
+}
+
+th,
+td {
+  text-align: left;
+}
+
+@media (min-width: 468px) {
+
+  th,
+  td {
+      display: table-cell;
+      padding: .25em .5em;
+  }
+
+  th:first-child,
+  td:first-child {
+      padding-left: 0;
+  }
+
+  th:last-child,
+  td:last-child {
+      padding-right: 0;
+  }
+
+}
+
+@media (max-width: 467px) {
+  tr {
+      /*nur das ohne media-querry geht auch!*/
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+  }
+}
+
+@media (min-width: 468px) {
+  tr.table-header {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+  }
+}
+
+.tabellen-title-spacing {
+  margin-top: 40px;
+}
+
+tr.adapt-cell td:last-child {
+  width: 1%;
+  white-space: nowrap;
+  /*<td> should adapt it's size to text*/
+}
+
+/* -- Ende: "Tabellen"-Sektion -- */
+
+/** -- Icons  -- **/
+
+/* Icons */
+.not-in-title-svg {
+  height: 3vh;
+  vertical-align: text-bottom;
+  /* Wichtig: Macht, dass das SVG auch immer schön auf gleicher Höhe mit dem Text ist. */
+}
+
+.in-title-svg {
+  height: 3vh;
+  vertical-align: baseline;
+  /* Wichtig: Macht, dass das SVG auch immer schön auf gleicher Höhe mit dem Text ist. */
+}
+
+.icon-v-align {
+  /* Für Counter-Component */
+  vertical-align: text-bottom;
+}
+
+/* -- End of "Icons" -- */
+
+
+/** -- Start "Footer"-Sektion -- **/
+.footer {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  background-color: #2f343a;;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: black;
+  font-size: 16px;
+}
+
+.adresseWrap {
+  max-width: 500px;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.adresseUn {
+  background: #F9F9F9;
+  padding: 12px 10px;
+}
+
+.adresseUn h2 {
+  text-transform: uppercase;
+  text-align: left;
+  margin: 10px;
+}
+
+.adresseUn p {
+  text-align: left;
+  margin: 10px;
+  line-height: 1.5;
+}
+
+.adresseUn a:visited,
+.adresseUn a:link,
+.adresseUn a:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+/* Iframes in Footer & Videso embedding. */
+
+#maps
+
+/*da ich Google-Maps in Flex-Box integriert habe, funktioniert responsive-design bei der Google-Karte nicht!*/
+  {
+  overflow: hidden;
+}
+
+.maps-margin {
+  margin-top: 7%;
+}
+
+/* Ende Video & Google-Maps embedding */
+
+.last-container {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.copy-item {
+  color: white;
+}
+
+.link-item {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  justify-content: space-evenly;
+}
+
+.link-item a:visited,
+.link-item a:link,
+.link-item a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.link-item a:hover,
+.adresseUn a:hover {
+  text-decoration: underline;
+}
+
+/* Media-Queries */
+@media only screen and (max-width: 479px) {
+  .last-container {
+      flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 989px) {
+  .footer {
+      justify-content: center;
+  }
+
+  .last-container {
+      flex-wrap: wrap;
+  }
+}
+
+/** -- End of "Footer"-Sektion -- **/
